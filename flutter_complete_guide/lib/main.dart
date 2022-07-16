@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import './answer.dart';
-
-import './question.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,23 +16,38 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
-  final questions = [
+  final _questions = const [
     {
       'questionText': 'What\'s your favorite color ?',
-      'answers': ['Black', 'Red', 'Green', 'White']
+      'answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Green', 'score': 3},
+        {'text': 'White', 'score': 1}
+      ]
     },
     {
       'questionText': 'What\'s your favorite animals ?',
-      'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion']
+      'answers': [
+        {'text': 'Rabbit', 'score': 3},
+        {'text': 'Snake', 'score': 11},
+        {'text': 'Elephant', 'score': 7},
+        {'text': 'Lion', 'score': 5}
+      ]
     },
     {
       'questionText': 'Who\'s your favorite instructor ?',
-      'answers': ['Max', 'John', 'Marc']
+      'answers': [
+        {'text': 'Max', 'score': 1},
+        {'text': 'John', 'score': 1},
+        {'text': 'Marc', 'score': 1},
+        {'text': 'Sylvia', 'score': 1}
+      ]
     },
   ];
 
   void _answerQuestion() {
-    if(_questionIndex < questions.length) {
+    if(_questionIndex < _questions.length) {
 
     }
     setState(() {
@@ -51,19 +65,13 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: Text('Awesome Mobile App'),
           ),
-          body: _questionIndex < questions.length
-          ? Column(
-            children: <Widget>[
-              Question(questions[_questionIndex]['questionText'] as String),
-              ...(questions[_questionIndex]['answers'] as List<String>).map((answer) {
-                return Answer(_answerQuestion, answer);
-              }).toList()
-            ],
+          body: _questionIndex < _questions.length
+          ? Quiz(
+              answerQuestion: _answerQuestion,
+              questions: _questions,
+              questionIndex: _questionIndex
           )
-          : Center(
-            child: Text('You did it !',
-              style: TextStyle(fontSize: 40),),
-          ),
+          : Result(),
        )
     );
   }
