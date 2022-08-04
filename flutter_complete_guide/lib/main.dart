@@ -48,15 +48,18 @@ class _MyAppState extends State<MyApp> {
   ];
 
   void _answerQuestion(int score) {
-    if(_questionIndex < _questions.length) {
+    _totalScore += score;
 
-    }
-    _totalScore = _totalScore + score;
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
-    
     print(_questionIndex);
+
+    if(_questionIndex < _questions.length) {
+      print('We have more questions!');
+    } else {
+      print('No more questions!');
+    }
   }
 
   @override
@@ -73,7 +76,7 @@ class _MyAppState extends State<MyApp> {
               questions: _questions,
               questionIndex: _questionIndex
           )
-          : Result(),
+          : Result(_totalScore),
        )
     );
   }
