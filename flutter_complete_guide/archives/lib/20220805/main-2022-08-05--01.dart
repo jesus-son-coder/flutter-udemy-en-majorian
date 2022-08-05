@@ -1,7 +1,7 @@
 // 2022-08-05 @10h40
 import 'package:flutter/material.dart';
-import '../../lib/quiz.dart';
-import '../../lib/result.dart';
+import 'quiz.dart';
+import 'result.dart';
 
 void main() {
   runApp(MyApp());
