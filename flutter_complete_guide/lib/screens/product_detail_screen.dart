@@ -3,9 +3,7 @@ import '../providers/products.dart';
 import 'package:provider/provider.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  // final String title;
 
-  // ProductDetailScreen(this.title);
   static const routeName = '/product-detail';
 
   @override
@@ -14,7 +12,7 @@ class ProductDetailScreen extends StatelessWidget {
 
     final loadedProduct = Provider.of<Products>(
         context,
-        listen: false,
+        // listen: false,
       ).findById(productId);
 
     return Scaffold(
