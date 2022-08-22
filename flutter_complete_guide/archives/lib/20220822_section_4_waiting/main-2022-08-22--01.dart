@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/widgets/new_transaction.dart';
-import 'package:flutter_complete_guide/widgets/transaction_list.dart';
+//import 'package:flutter_complete_guide/widgets/new_transaction.dart';
+//import 'package:flutter_complete_guide/widgets/transaction_list.dart';
+import './widgets/new_transaction.dart';
+import './widgets/transaction_list.dart';
 import './models/transaction.dart';
 import 'package:intl/intl.dart';
 
@@ -93,10 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   elevation: 5,
                 )
             ),
-            // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-            // DECOMMENTER LA LIGNE CI-DESSOUS !!!!
-            // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-            // TransactionList(_userTransaction)
+            TransactionList(_userTransaction)
           ],
         ),
       ),

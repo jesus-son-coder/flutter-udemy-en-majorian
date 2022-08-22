@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Chart extends StatelessWidget {
-
+class ProductsOverviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container();
