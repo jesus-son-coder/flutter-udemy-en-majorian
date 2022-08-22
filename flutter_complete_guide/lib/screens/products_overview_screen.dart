@@ -12,5 +12,3 @@ class ProductsOverviewScreen extends StatelessWidget {
     );
   }
 }
-
-
