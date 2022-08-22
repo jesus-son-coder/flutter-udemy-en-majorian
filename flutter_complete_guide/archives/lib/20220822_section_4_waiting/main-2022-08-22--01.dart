@@ -93,7 +93,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   elevation: 5,
                 )
             ),
-            TransactionList(_userTransaction)
+            // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+            // DECOMMENTER LA LIGNE CI-DESSOUS !!!!
+            // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+            // TransactionList(_userTransaction)
           ],
         ),
       ),
