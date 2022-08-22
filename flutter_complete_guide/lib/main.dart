@@ -23,10 +23,11 @@ class MyApp extends StatelessWidget {
         ),
         appBarTheme: AppBarTheme(
             titleTextStyle: TextStyle(
-            fontFamily: 'OpenSans',
-            fontSize: 20,
-            fontWeight: FontWeight.w200
-        )),
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+              fontWeight: FontWeight.w200
+            )
+        ),
       ),
       home: MyHomePage(),
     );
@@ -41,8 +42,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final List<Transaction> _userTransaction = [
-    Transaction(id:'t1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(id:'t2', title: 'Weekly Groceries', amount: 16.54, date: DateTime.now()),
+    /* Transaction(id:'t1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(id:'t2', title: 'Weekly Groceries', amount: 16.54, date: DateTime.now()), */
   ];
 
   void _addNewTransaction(String txTitle, double txAmount) {
@@ -92,7 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   elevation: 5,
                 )
             ),
-            // UserTransactions()
             TransactionList(_userTransaction)
           ],
         ),
