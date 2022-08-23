@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_complete_guide/widgets/product_item.dart';
 import './screens/products_overview_screen.dart';
 import './screens/product_detail_screen.dart';
+import './screens/cart_screen.dart';
 import './providers/products.dart';
 import './providers/cart.dart';
 
@@ -21,11 +22,12 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
                 primarySwatch: Colors.purple,
                 accentColor: Colors.deepOrange,
-                fontFamily: 'Lato'
+                fontFamily: 'Lato',
             ),
             home: ProductsOverviewScreen(),
             routes: {
-              ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+              ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),  // on crée un nouveau ProductDetailScreen object
+              CartScreen.routeName: (ctx) => CartScreen(), // on crée un nouveau CartScreen object
             }
         )
     );
