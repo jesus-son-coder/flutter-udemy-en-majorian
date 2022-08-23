@@ -11,7 +11,6 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Nous avons 2 Providers dans la classe principale :
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (ctx) => Products(),),
