@@ -11,10 +11,6 @@ class ProductItem extends StatelessWidget {
       lorsque des données changent : */
     final product = Provider.of<Product>(context, listen: false);
 
-    /* Avec "Consumer<>", on ne re-exécuter que des sous-parties du Widget-Tree,
-      lorsque certaines données changent : */
-    return Consumer<Product>(
-      builder: (ctx, product, child) {
         return ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: GridTile(
@@ -31,21 +27,21 @@ class ProductItem extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 backgroundColor: Colors.black54,
-                leading: IconButton(
-                    icon: Icon(product.isFavorite ? Icons.favorite : Icons.favorite_border),
-                    onPressed: () {
-                      product.toggleFavoriteStatus();
-                    },
-                    color: Theme.of(context).accentColor),
+                /* On peut encore limiter la section à mettre à jour avec "Consumer<>" lorsque certaines données changent : */
+                leading: Consumer<Product>(
+                    builder: (ctx, product, child)  => IconButton(
+                      icon: Icon(product.isFavorite ? Icons.favorite : Icons.favorite_border),
+                      onPressed: () {
+                        product.toggleFavoriteStatus();
+                      },
+                      color: Theme.of(context).accentColor),
+                ),
                 trailing: IconButton(
                     icon: Icon(Icons.shopping_cart),
                     onPressed: () {},
                     color: Theme.of(context).accentColor)),
           ),
         );
-      }
-    );
-
 
   }
 }
