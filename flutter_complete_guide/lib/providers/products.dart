@@ -37,29 +37,16 @@ class Products with ChangeNotifier {
     ),
   ];
 
-  var _showFavoritesOnly = false;
-
   List<Product> get items {
-    if(_showFavoritesOnly) {
-      return _items.where((prodItem) => prodItem.isFavorite).toList();
-    }
     return [..._items];
+  }
+
+  List<Product> get favoriteItems {
+    return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
-  }
-
-  void showFavoritesOnly() {
-    _showFavoritesOnly = true;
-    /* "notifyListeners" sert à re-contruire les zones ou widgets qui sont intéressées par des modifications de données,
-      cad celles qui ont un Provider pour écouter ces modifications : */
-    notifyListeners();
-  }
-
-  void showAll() {
-    _showFavoritesOnly = false;
-    notifyListeners();
   }
 
   void addProduct() {
