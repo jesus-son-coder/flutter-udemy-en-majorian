@@ -45,6 +45,11 @@ class _EditProductScreenState extends State<EditProductScreen> {
   }
 
   void _saveForm() {
+    final isValid = _form.currentState!.validate();
+    if(!isValid) {
+      print('My Tag : There is a problem in the form');
+      return;
+    }
     _form.currentState!.save();
     print(_editedProduct.title);
     print(_editedProduct.price);
@@ -70,10 +75,22 @@ class _EditProductScreenState extends State<EditProductScreen> {
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Title',
+                    errorStyle: TextStyle(
+                        color: Colors.red,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                    )
                   ),
                   textInputAction: TextInputAction.next,
                   onFieldSubmitted: (_) {
                     FocusScope.of(context).requestFocus(_priceFocusNode);
+                  },
+                  validator: (value) {
+                    if(value!.isEmpty || value == null || value == '') {
+                      return 'Please provide a value.';
+                    }
+                    return null;
                   },
                   onSaved: (value) {
                     if (value != null) {
