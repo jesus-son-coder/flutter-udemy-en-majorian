@@ -113,6 +113,18 @@ class _EditProductScreenState extends State<EditProductScreen> {
                   onFieldSubmitted: (_) {
                     FocusScope.of(context).requestFocus(_descriptionFocusNode);
                   },
+                  validator: (value) {
+                    if(value!.isEmpty || value == null || value == '') {
+                      return 'Please enter a price.';
+                    }
+                    if(double.tryParse(value) == null) {
+                      return 'Please enter a valid number !';
+                    }
+                    if(double.parse(value) <= 0) {
+                      return 'Please enter a number greater than zero';
+                    }
+                    return null;
+                  },
                   onSaved: (value) {
                     if (value != null) {
                       _editedProduct = Product(
@@ -131,6 +143,15 @@ class _EditProductScreenState extends State<EditProductScreen> {
                   maxLines: 3,
                   keyboardType: TextInputType.multiline,
                   focusNode: _descriptionFocusNode,
+                  validator: (value) {
+                    if(value!.isEmpty || value == null || value == '') {
+                      return 'Please enter a description.';
+                    }
+                    if(value.length < 10) {
+                      return 'Should be at least 10 characters';
+                    }
+                    return null;
+                  },
                   onSaved: (value) {
                     if (value != null) {
                       _editedProduct = Product(
@@ -169,6 +190,21 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         },
                         onFieldSubmitted: (_) {
                           _saveForm();
+                        },
+                        validator: (value) {
+                          if(value!.isEmpty || value == null || value == '') {
+                            return 'Please enter an image URL.';
+                          }
+                          if(!value.startsWith('http') && !value.startsWith('https')) {
+                            return 'Please enter a valid URL !';
+                          }
+                          if(!value.endsWith('.png')
+                            && !value.endsWith('.jpg')
+                            && !value.endsWith('.jpeg')
+                          ) {
+                            'Please enter a valid image URL !';
+                          }
+                          return null;
                         },
                         onSaved: (value) {
                           if (value != null) {
